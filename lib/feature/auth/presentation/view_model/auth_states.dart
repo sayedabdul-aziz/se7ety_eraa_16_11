@@ -11,3 +11,13 @@ class AuthFailureState extends AuthStates {
 
   AuthFailureState({required this.error});
 }
+
+class UpdateLoadingState extends AuthStates {}
+
+class UpdateSucessState extends AuthStates {}
+
+class UpdateErrorState extends AuthStates {
+  final String error;
+
+  UpdateErrorState({required this.error});
+}

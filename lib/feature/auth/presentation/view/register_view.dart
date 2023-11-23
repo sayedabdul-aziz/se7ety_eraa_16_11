@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:se7ety_eraa_16_11/core/functions/email_validate.dart';
 import 'package:se7ety_eraa_16_11/core/utils/app_colors.dart';
 import 'package:se7ety_eraa_16_11/core/utils/app_text_styles.dart';
 import 'package:se7ety_eraa_16_11/core/widgets/custom_error.dart';
 import 'package:se7ety_eraa_16_11/core/widgets/custom_loading.dart';
+import 'package:se7ety_eraa_16_11/feature/auth/presentation/view/doctor_register_data.dart';
+import 'package:se7ety_eraa_16_11/feature/auth/presentation/view/signin_view.dart';
 import 'package:se7ety_eraa_16_11/feature/auth/presentation/view_model/auth_cubit.dart';
 import 'package:se7ety_eraa_16_11/feature/auth/presentation/view_model/auth_states.dart';
-import 'package:se7ety_eraa_16_11/feature/patient/home/home_view.dart';
+import 'package:se7ety_eraa_16_11/feature/patient/home/presentation/nav_bar.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key, required this.index});
@@ -27,41 +28,30 @@ class _RegisterViewState extends State<RegisterView> {
 
   bool isVisable = true;
 
-  @override
-  void dispose() {
-    _displayName.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
   String handleUserType(int index) {
     return index == 0 ? 'دكتور' : 'مريض';
   }
-  //A>b>c>x  push
-  //x  pushReplac.
-  //x  pushReplac.
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthStates>(
       listener: (context, state) {
         if (state is AuthSuccessState) {
-          // if (widget.index == 0) {
-          //   Navigator.of(context).pushAndRemoveUntil(
-          //     MaterialPageRoute(
-          //       builder: (context) => const DoctorUploadData(),
-          //     ),
-          //     (route) => false,
-          //   );
-          // } else {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => const HomeView(),
-            ),
-            (route) => false,
-          );
-          // }
+          if (widget.index == 0) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (context) => const DoctorUploadData(),
+              ),
+              (route) => false,
+            );
+          } else {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                builder: (context) => const PatientMainPage(),
+              ),
+              (route) => false,
+            );
+          }
         } else if (state is AuthFailureState) {
           Navigator.of(context).pop();
           showErrorDialog(context, state.error);
@@ -198,11 +188,11 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                           TextButton(
                               onPressed: () {
-                                // Navigator.of(context)
-                                //     .pushReplacement(MaterialPageRoute(
-                                //   builder: (context) =>
-                                //       LoginView(index: widget.index),
-                                // ));
+                                Navigator.of(context)
+                                    .pushReplacement(MaterialPageRoute(
+                                  builder: (context) =>
+                                      LoginView(index: widget.index),
+                                ));
                               },
                               child: Text(
                                 'سجل دخول',
@@ -227,7 +217,7 @@ class _RegisterViewState extends State<RegisterView> {
     Widget okButton = TextButton(
       child: Text(
         "OK",
-        style: GoogleFonts.lato(fontWeight: FontWeight.bold),
+        style: getbodyStyle(),
       ),
       onPressed: () {
         Navigator.pop(context);
@@ -238,13 +228,11 @@ class _RegisterViewState extends State<RegisterView> {
     CupertinoAlertDialog alert = CupertinoAlertDialog(
       title: Text(
         "Error!",
-        style: GoogleFonts.lato(
-          fontWeight: FontWeight.bold,
-        ),
+        style: getbodyStyle(),
       ),
       content: Text(
         "Email already Exists",
-        style: GoogleFonts.lato(),
+        style: getbodyStyle(),
       ),
       actions: [
         okButton,

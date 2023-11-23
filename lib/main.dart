@@ -40,7 +40,7 @@ class MainApp extends StatelessWidget {
                 centerTitle: true,
                 elevation: 0.0,
                 actionsIconTheme: IconThemeData(color: AppColors.color1),
-                backgroundColor: AppColors.white),
+                backgroundColor: AppColors.color1),
             inputDecorationTheme: InputDecorationTheme(
               contentPadding: const EdgeInsets.only(
                   left: 20, top: 10, bottom: 10, right: 20),

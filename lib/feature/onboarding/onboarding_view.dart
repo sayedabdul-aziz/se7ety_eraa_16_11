@@ -20,6 +20,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.white,
         actions: [
           TextButton(
               onPressed: () {
@@ -27,7 +28,10 @@ class _OnboardingViewState extends State<OnboardingView> {
                   builder: (context) => const WelcomeView(),
                 ));
               },
-              child: const Text('تخطي'))
+              child: Text(
+                'تخطي',
+                style: getbodyStyle(color: AppColors.color1),
+              ))
         ],
       ),
       body: Padding(
