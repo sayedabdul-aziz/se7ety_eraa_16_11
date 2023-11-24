@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:se7ety_eraa_16_11/feature/onboarding/onboarding_view.dart';
-import 'package:se7ety_eraa_16_11/feature/patient/home/presentation/nav_bar.dart';
+import 'package:se7ety_eraa_16_11/welcome_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -25,7 +25,7 @@ class _SplashViewState extends State<SplashView> {
       () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) =>
-              (user != null) ? const PatientMainPage() : const OnboardingView(),
+              (user != null) ? const WelcomeView() : const OnboardingView(),
         ));
       },
     );

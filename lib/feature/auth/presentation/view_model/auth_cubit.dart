@@ -29,7 +29,6 @@ class AuthCubit extends Cubit<AuthStates> {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       User user = credential.user!;
-
       await user.updateDisplayName(name);
 
       FirebaseFirestore.instance.collection('patients').doc(user.uid).set({

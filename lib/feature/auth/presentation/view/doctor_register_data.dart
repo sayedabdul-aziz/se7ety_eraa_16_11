@@ -56,7 +56,7 @@ class _DoctorUploadDataState extends State<DoctorUploadData> {
     UserID = user?.uid;
   }
 
-  uploadImageToFireStore(File image, String imageName) async {
+  Future<String> uploadImageToFireStore(File image, String imageName) async {
     Reference ref =
         _storage.ref().child('doctors/${_auth.currentUser!.uid}$imageName');
     SettableMetadata metadata = SettableMetadata(contentType: 'image/jpeg');

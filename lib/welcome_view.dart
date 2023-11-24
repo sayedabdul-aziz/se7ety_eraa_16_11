@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:se7ety_eraa_16_11/core/utils/app_colors.dart';
 import 'package:se7ety_eraa_16_11/core/utils/app_text_styles.dart';
-import 'package:se7ety_eraa_16_11/feature/auth/presentation/view/register_view.dart';
 import 'package:se7ety_eraa_16_11/feature/auth/presentation/view/signin_view.dart';
 
 class WelcomeView extends StatelessWidget {
@@ -76,7 +75,7 @@ class WelcomeView extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const RegisterView(index: 0),
+                                          const LoginView(index: 0),
                                     ));
                               },
                               child: Container(

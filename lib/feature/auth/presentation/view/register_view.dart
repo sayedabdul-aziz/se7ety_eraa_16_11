@@ -150,17 +150,17 @@ class _RegisterViewState extends State<RegisterView> {
                         child: ElevatedButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              // if (widget.index == 0) {
-                              //   context.read<AuthCubit>().registerDoctor(
-                              //       _displayName.text,
-                              //       _emailController.text,
-                              //       _passwordController.text);
-                              // } else {
-                              context.read<AuthCubit>().registerPatient(
-                                  _displayName.text,
-                                  _emailController.text,
-                                  _passwordController.text);
-                              // }
+                              if (widget.index == 0) {
+                                context.read<AuthCubit>().registerDoctor(
+                                    _displayName.text,
+                                    _emailController.text,
+                                    _passwordController.text);
+                              } else {
+                                context.read<AuthCubit>().registerPatient(
+                                    _displayName.text,
+                                    _emailController.text,
+                                    _passwordController.text);
+                              }
                             }
                           },
                           style: ElevatedButton.styleFrom(

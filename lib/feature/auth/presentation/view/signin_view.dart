@@ -26,9 +26,10 @@ class _LoginViewState extends State<LoginView> {
 
   bool isVisable = true;
 
-  String handleUserType(int index) {
-    return index == 0 ? 'دكتور' : 'مريض';
+  String handleUserType() {
+    return widget.index == 0 ? 'دكتور' : 'مريض';
   }
+  //A,b,home
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +74,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      'سجل دخول الان كـ "${handleUserType(widget.index)}"',
+                      'سجل دخول الان كـ "${handleUserType()}"',
                       style: getTitleStyle(),
                     ),
                     const SizedBox(height: 30),
